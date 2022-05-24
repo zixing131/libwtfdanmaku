@@ -84,7 +84,8 @@ namespace WTFDanmaku {
         if (FAILED(hr))
             return hr;
 
-        mD2DFactory->GetDesktopDpi(&mDpiX, &mDpiY);
+        // mD2DFactory->GetDesktopDpi(&mDpiX, &mDpiY);
+        mDpiX = mDpiY = static_cast<FLOAT>(GetDpiForWindow(mHwnd));
         return hr;
     }
 
