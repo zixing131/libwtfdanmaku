@@ -83,9 +83,11 @@ namespace WTFDanmaku {
         hr = D2D1CreateFactory(D2D1_FACTORY_TYPE_MULTI_THREADED, options, mD2DFactory.GetAddressOf());
         if (FAILED(hr))
             return hr;
-
-        // mD2DFactory->GetDesktopDpi(&mDpiX, &mDpiY);
-        mDpiX = mDpiY = static_cast<FLOAT>(GetDpiForWindow(mHwnd));
+#pragma warning(push)
+#pragma warning(disable:4996) //GetDesktopDpi死了  GetDpiForWindow 要1607, 等我之后找个借口鲨了win8就可以打开这个开关了!
+        mD2DFactory->GetDesktopDpi(&mDpiX, &mDpiY);
+        // mDpiX = mDpiY = static_cast<FLOAT>(GetDpiForWindow(mHwnd));
+#pragma warning(pop) 
         return hr;
     }
 
