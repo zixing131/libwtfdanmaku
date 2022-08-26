@@ -50,7 +50,7 @@ namespace WTFDanmaku {
                 int textSize = static_cast<int>(std::stof(attributes[2]));
                 int textColor = std::stoi(attributes[3]) | 0xFF000000;
                 time_t timestamp = std::stoull(attributes[4]);
-                int danmakuId = std::stoi(attributes[7]);
+                long long danmakuId = std::stoll(attributes[7]);
                 std::wstring comment = UTF8ToWideString(node->value());
 
                 DanmakuRef danmaku = DanmakuFactory::CreateDanmaku(type, time, comment, textSize, textColor, timestamp, danmakuId);
